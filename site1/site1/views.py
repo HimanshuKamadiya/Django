@@ -1,6 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-
+from .forms import uforms
 def home(request):
     return  render(request, 'index.html')
 
@@ -49,3 +49,17 @@ def out1(request):
     if request.method=="GET":
         out=request.GET.get('output') #variable
     return render(request,'output.html',{"out2":out})
+
+def forms_py(request):
+    a= uforms()
+    data={'form':a}
+    c=0
+    try:
+        if request.method=="post":
+            a=int(request.POST.get('int1'))
+            b=int(request.POST.get('int2'))
+            c=a+b
+            data['out']=c
+    except:
+        pass
+    return render(request,'form-py.html',data)
