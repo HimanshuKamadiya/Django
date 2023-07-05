@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 def home(request):
@@ -32,4 +32,20 @@ def form(request):
     except:
         pass
     return render(request,'form.html',{'out':ans})
-        
+
+def form_1(request):
+    c=0
+    try:
+        a=int(request.GET['num'])
+        b=int(request.GET['num1'])
+        c=a+b
+        url='/out/?output{}'.format(c)
+        return HttpResponseRedirect(url)
+    except:
+        pass
+    return render(request,'form1.html',{'out':c})
+
+def out1(request):
+    if request.method=="GET":
+        out=request.GET.get('out') #variable
+    return render(request,'output.html',{"out2":out})

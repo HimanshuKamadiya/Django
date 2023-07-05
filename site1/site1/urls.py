@@ -24,5 +24,7 @@ urlpatterns = [
     path('abc/', views.sum),
     path('',views.home),
     path('data/',views.dynamic_data),
-    path('form/',views.form)
+    path('form/',views.form),
+    path('out/',views.form_1),
+    path('out02/',views.out1),
 ]
