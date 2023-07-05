@@ -39,7 +39,7 @@ def form_1(request):
         a=int(request.GET['num'])
         b=int(request.GET['num1'])
         c=a+b
-        url='/out/?output{}'.format(c)
+        url='/out02/?output={}'.format(c)
         return HttpResponseRedirect(url)
     except:
         pass
@@ -47,5 +47,5 @@ def form_1(request):
 
 def out1(request):
     if request.method=="GET":
-        out=request.GET.get('out') #variable
+        out=request.GET.get('output') #variable
     return render(request,'output.html',{"out2":out})
