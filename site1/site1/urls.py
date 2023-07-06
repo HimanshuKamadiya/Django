@@ -27,4 +27,5 @@ urlpatterns = [
     path('form/',views.form),
     path('out/',views.form_1),
     path('out02/',views.out1),
+    path('out03/',views.forms_py),
 ]
