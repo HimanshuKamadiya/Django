@@ -63,3 +63,21 @@ def forms_py(request):
     except:
         pass
     return render(request,'form-py.html',data)
+
+def calc (request):
+    ans=0
+    try:
+        n1=int(request.GET('num'))
+        n2=int(request.GET('num2'))
+        
+        if request.GET.get('add') =='':
+            ans= n1+n2
+        elif request.GET.get('sub')=='':
+            ans=n1-n2
+        elif request.GET.get('divide')=='':
+            ans= n1/n2
+        else:
+            ans=n1*n2
+    except:
+        pass
+    return render(request, 'calculator.html', {'re':ans})

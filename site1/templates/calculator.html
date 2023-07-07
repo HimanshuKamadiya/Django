@@ -1,0 +1,25 @@
+{% extends 'hk.html' %}
+{% block abc %}
+<form method="get">
+    <div class="mb-3">
+      <label for="" class="form-label">value1</label>
+      <input type="text" class="form-control" name="num">
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="form-label">value2</label>
+        <input type="text" class="form-control" name="num2">
+      </div>
+
+   <button type="button" class="btn btn-primary" name="add">add</button>
+   <button type="button" class="btn btn-primary" name= "sub">sub</button>
+   <button type="button" class="btn btn-primary" name= "divide">/</button>
+   <button type="button" class="btn btn-primary" name= "multy">*</button>
+
+
+    <div class="mb-3">
+      <label for="" class="form-label">output</label>
+      <input type="text"  value="{{re}}">
+    </div>
+  </form>
+{% endblock abc %}
