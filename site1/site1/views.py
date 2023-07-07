@@ -55,7 +55,7 @@ def forms_py(request):
     data={'form':a}
     c=0
     try:
-        if request.method=="post":
+        if request.method=="POST":
             a=int(request.POST.get('int1'))
             b=int(request.POST.get('int2'))
             c=a+b
