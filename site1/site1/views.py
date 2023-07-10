@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from .forms import uforms
+from kamadiya.models import service
 def home(request):
     return  render(request, 'index.html')
 
@@ -82,3 +83,10 @@ def calc(request):
     except:
         pass
     return render(request, 'calculator.html', {'re':ans})
+
+def model_s(request):
+    sa_data=service.objects.all()
+    data={
+        'service_data':sa_data,
+    }
+    return render(request, 'model.html', data)
