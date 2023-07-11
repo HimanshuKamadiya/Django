@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
 {% block bca %}
-<img src="/static/two.jpg" width="1000" height="500">
+{%for i in amit%}
+{{i.processor}}
+{{i.card}}
+{% endfor %}
 {% endblock bca %}
