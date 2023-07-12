@@ -29,5 +29,7 @@ urlpatterns = [
     path('out02/',views.out1),
     path('out03/',views.forms_py),
     path('calc/',views.calc),
-    path('models/',views.model_s)
+    path('models/',views.model_s),
+    path('bookmodel/',views.book_models),
+    path('bookout/<id>',views.book_out),
 ]

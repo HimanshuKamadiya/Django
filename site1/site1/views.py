@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from .forms import uforms
-from kamadiya.models import service
+from kamadiya.models import service,book
 def home(request):
     return  render(request, 'index.html')
 
@@ -90,3 +90,17 @@ def model_s(request):
         'service_data':sa_data,
     }
     return render(request, 'model.html', data)
+
+def book_models(request):
+    context=book.objects.all()
+    data={
+        'book_context': context
+    }
+    return render(request,'book.html',data)
+
+def book_out(request,id):
+    ba=book.objects.get(id=id)
+    data={
+        'name':ba
+    }
+    return render(request,'content.html',data)

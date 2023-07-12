@@ -1,4 +1,48 @@
 {% extends 'base.html' %}
+
 {% block bca %}
-<img src="/static/two.jpg" width="1000" height="500">
+<html lang="en">
+<head>
+    <title>Image Scroller</title>
+    <style>
+        .scroller-container {
+            width: 1300px; /* Adjust the width as desired */
+            overflow: auto;
+            white-space: nowrap;
+        }
+
+        .scroller-image {
+            display: inline-block;
+            max-width: 100%; /* Adjust the maximum width as desired */
+            height: auto; /* Maintain aspect ratio */
+            margin-right: 10px; /* Adjust spacing between images */
+        }
+    </style>
+</head>
+<body>
+    <div class="scroller-container">
+        <img src="/static/twoo.jpg" class="scroller-image">
+        <img src="/static/1.jpg" class="scroller-image">
+        <img src="/static/three.jpg" class="scroller-image">
+    </div>
+
+    <script>
+        // Automatically scroll the images horizontally
+        const scrollerContainer = document.querySelector('.scroller-container');
+        let scrollAmount = 0;
+        const scrollDelay = 2; // Adjust scrolling speed (lower value = faster)
+
+        function scrollImages() {
+            scrollAmount++;
+            scrollerContainer.scrollLeft = scrollAmount;
+
+            if (scrollAmount >= scrollerContainer.scrollWidth - scrollerContainer.clientWidth) {
+                scrollAmount = 0;
+            }
+        }
+
+        setInterval(scrollImages, scrollDelay);
+    </script>
+</body>
+</html>
 {% endblock bca %}
