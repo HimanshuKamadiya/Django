@@ -1,0 +1,8 @@
+{% extends 'hk.html' %}
+{% block abc %}
+{% for i in book_context %}
+{{i.content}}
+<a href='/bookout/{{i.id}}'>{{i.content}} </a>
+{% endfor %}
+{% endblock abc %}
+
