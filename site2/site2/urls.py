@@ -22,4 +22,6 @@ urlpatterns = [
     path('hk/',views.sum),
     path('',views.home),
     path('pro/',views.gabbar),
+    path('bookmodel/',views.book_model),
+    path('bookout/<id>',views.book_out)
 ]

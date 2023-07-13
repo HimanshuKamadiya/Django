@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block bca %}
+{%for i in books%}
+<a href='/bookout/{{i.id}}'>{{i.book_name}}</a>
+{%endfor%}
+{% endblock bca %}
