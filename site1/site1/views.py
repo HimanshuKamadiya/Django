@@ -2,6 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from .forms import uforms
 from kamadiya.models import service,book
+from django.core.paginator import Paginator
 def home(request):
     return  render(request, 'index.html')
 
@@ -93,13 +94,20 @@ def model_s(request):
 
 def book_models(request):
     context=book.objects.all()
+    
+    if request.method=='GET':
+        a=request.GET.get('x')
+        if a!=None:
+            context=book.objects.filter(content__icontains= a)
+    
     data={
         'book_context': context
     }
+    
     return render(request,'book.html',data)
 
-def book_out(request,id):
-    ba=book.objects.get(id=id)
+def book_out(request,slug):
+    ba=book.objects.get(slug=slug)
     data={
         'name':ba
     }
