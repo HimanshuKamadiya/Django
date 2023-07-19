@@ -31,5 +31,5 @@ urlpatterns = [
     path('calc/',views.calc),
     path('models/',views.model_s),
     path('bookmodel/',views.book_models),
-    path('bookout/<id>',views.book_out),
+    path('bookout/<slug>',views.book_out),
 ]

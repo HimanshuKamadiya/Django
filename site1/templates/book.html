@@ -1,8 +1,31 @@
 {% extends 'hk.html' %}
 {% block abc %}
-{% for i in book_context %}
+<form class="d-flex" role="search" method="get">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="x" >
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+<br>
 
-<a href='/bookout/{{i.id}}'>{{i.content}} </a>
+{% for i in book_context %}
+<a href='/bookout/{{i.slug}}'>{{i.content}} </a>
+
 {% endfor %}
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 {% endblock abc %}
 
