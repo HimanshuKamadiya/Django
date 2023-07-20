@@ -3,6 +3,9 @@ from django.shortcuts import render
 from .forms import uforms
 from kamadiya.models import service,book
 from django.core.paginator import Paginator
+
+
+
 def home(request):
     return  render(request, 'index.html')
 
@@ -94,11 +97,14 @@ def model_s(request):
 
 def book_models(request):
     context=book.objects.all()
-    
+    vars=book.objects.all()
+    a=Paginator(vars,2)
+    page_num=request.GET.get('page')
+    f_varr=a.get_page(page_num)
     if request.method=='GET':
         a=request.GET.get('x')
         if a!=None:
-            context=book.objects.filter(content__icontains= a)
+            f_varr =book.objects.filter(name__icontains= a)
     
     data={
         'book_context': context
