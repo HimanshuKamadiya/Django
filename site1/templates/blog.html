@@ -1,0 +1,14 @@
+{% extends 'hk.html' %}
+{% block abc %}
+<h1>What is PYTHON? </h1>
+    <ul>
+        {% for i in blog_b %}
+            <li>
+                <h3>Author: {{ i.author_name }}</h3>
+                <li><h4>Publication Date: {{ i.date_of_publication }}</h4></li>
+                <h5><p>{{ i.blog_content }}</p></h5>
+            </li>
+        {% empty %}
+            <li>No blog posts available.</li>
+        {% endfor %}
+{% endblock abc %}

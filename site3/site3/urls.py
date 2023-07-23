@@ -1,5 +1,5 @@
 """
-URL configuration for site1 project.
+URL configuration for site3 project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -15,22 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from site1 import views
-
+from django.urls import path,include
+from django.contrib import  admin
+from site3 import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('abc/', views.sum),
-    path('',views.home),
-    path('data/',views.dynamic_data),
-    path('form/',views.form),
-    path('out/',views.form_1),
-    path('out02/',views.out1),
-    path('out03/',views.forms_py),
-    path('calc/',views.calc),
-    path('models/',views.model_s),
-    path('bookmodel/',views.book_models),
-    path('bookout/<slug>',views.book_out),
-    path('blogout/',views.blog_a ),
+    path('',views.index,name= 'index'),
+    path("pollS/", include("poll.urls")),
+    path("admin/", admin.site.urls)
 ]
