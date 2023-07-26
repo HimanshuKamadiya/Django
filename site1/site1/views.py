@@ -135,9 +135,9 @@ def con(request):
     return render(request,'contact.html')
 def media_pg(request):
     if request.method=='POST':
-        img_file=request.FILES.get('img')
+        img_file=request.FILES.get('img',None)
         if img_file:
-          a=request.POST.get('name') 
+          a=request.POST.get('caption') 
           s=free(caption=a,img=img_file)
           s.save()
     return render (request,'media.html')
