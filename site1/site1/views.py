@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from .forms import uforms
-from kamadiya.models import service,book,blog
+from kamadiya.models import service,book,blog,contact,free
 from django.core.paginator import Paginator
 
 
@@ -123,3 +123,21 @@ def blog_a(request):
     return render(request,'blog.html',{'blog_b':blog_content})
 
 
+def con(request):
+    if request.method=='POST':
+        a=request.POST.get('name')
+        b=request.POST.get('mobile')
+        c=request.POST.get('address')
+        d=request.POST.get('message')
+        obj= contact(name=a,mobile=b,address=c,message=d)
+        obj.save()
+        
+    return render(request,'contact.html')
+def media_pg(request):
+    if request.method=='POST':
+        img_file=request.FILES.get('img')
+        if img_file:
+          a=request.POST.get('name') 
+          s=free(caption=a,img=img_file)
+          s.save()
+    return render (request,'media.html')

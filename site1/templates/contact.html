@@ -1,0 +1,24 @@
+{% extends 'hk.html' %}
+{% block abc %}
+<form method='post' action= '/contactout/'> <!--methond is the form tag attribute -->
+{% csrf_token %}
+    <div class="mb-3">
+      <label for="" class="form-label">Name</label>
+      <input type="text" class="form-control" name='name' >
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Mobile</label>
+      <input type="text" class="form-control" name="mobile">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Address</label>
+        <input type="text" class="form-control" name="address">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Message</label>
+        <input type="text" class="form-control" name="message">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock abc %}

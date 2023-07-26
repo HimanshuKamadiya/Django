@@ -1,0 +1,19 @@
+{% extends 'hk.html' %}
+{% block abc %}
+<form method='post' enctype="multipart/form-data">
+  {% csrf_token %}
+    <div class="mb-3">
+      <label for="" class="form-label">caption</label>
+      <input type="text" class="form-control" name='caption'> 
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Image</label>
+      <input type="file" class="form-control" name='img' >
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+
+{% endblock abc %}
+
