@@ -16,3 +16,14 @@ class blog(models.Model):
     blog_content=models.TextField(max_length=10000)
     author_name=models.CharField(max_length=100)
     date_of_publication=models.DateField()
+    
+class contact(models.Model):
+    name=models.CharField(max_length=100)
+    mobile=models.CharField(max_length=100)
+    address=models.CharField(max_length=100)
+    message=models.CharField(max_length=100)
+
+class free(models.Model):
+    caption= models.TextField(max_length=100)
+    img= models.FileField(upload_to="uploads/")
+    
