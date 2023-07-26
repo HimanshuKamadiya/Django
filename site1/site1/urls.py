@@ -36,7 +36,8 @@ urlpatterns = [
     path('bookout/<slug>',views.book_out),
     path('blogout/',views.blog_a ),
     path('contactout/',views.con),
-    path('upload/',views.media_pg)
+    path('upload/',views.media_pg),
+    path('mediaout/',views.media_out)
 ]
 
 if settings.DEBUG:

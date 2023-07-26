@@ -1,0 +1,8 @@
+{% extends 'hk.html' %}
+{% block abc %}
+{% for i in ab  %}
+<img src="/media/{{i.img}}" height=100 widht=100>
+<br>
+{{i.caption}}
+{% endfor %}
+{% endblock abc %}

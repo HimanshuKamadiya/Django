@@ -141,3 +141,6 @@ def media_pg(request):
           s=free(caption=a,img=img_file)
           s.save()
     return render (request,'media.html')
+def media_out(request):
+    b=free.objects.all()
+    return render (request,'mediaout.html',{'ab':b})
