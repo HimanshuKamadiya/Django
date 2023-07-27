@@ -23,5 +23,6 @@ urlpatterns = [
     path('',views.home),
     path('pro/',views.gabbar),
     path('bookmodel/',views.book_model),
-    path('bookout/<id>',views.book_out)
+    path('bookout/<id>',views.book_out),
+    path('signup/',views.signup,name='signup')
 ]

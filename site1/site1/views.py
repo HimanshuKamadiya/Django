@@ -4,6 +4,8 @@ from .forms import uforms
 from kamadiya.models import service,book,blog,contact,free
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login,logout
+from django.contrib import messages
 
 
 def home(request):
@@ -160,3 +162,17 @@ def sigup(request):
         return redirect('/')
     else:
         return HttpResponse('invalid')
+    
+def log_in(request):
+    if request.method== 'POST':
+        name=request.POST['name']
+        password=request.POST['password']
+        auth_out=authenticate(username=name,password=password)
+        if auth_out is not None:
+            login(request,auth_out)
+            return redirect('/')
+        else:
+            messages.error('invalid login')
+def log_out(request):
+    logout(request)
+    return redirect('/')

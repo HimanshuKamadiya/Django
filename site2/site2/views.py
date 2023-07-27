@@ -27,3 +27,18 @@ def book_out(request,id):
         'name':ab
     }
     return render(request,'out.html',data)
+
+def signup(request):
+    if request.method=='POST':
+        name=request.POST['Name']
+        username=request.POST['User_Name']
+        email= request.POST['Email']
+        password=request.POST['Password']
+        confirm_password=request.POST['Confirm_Password']
+        
+        myuser=User.objects.create_user(username,email,password)
+        myuser.first_name=name
+        myuser.save()
+        return redirect('/')
+    else:
+        return HttpResponse('invalid')
