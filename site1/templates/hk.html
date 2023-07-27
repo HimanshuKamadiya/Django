@@ -38,10 +38,24 @@
                 <a class="nav-link disabled">Disabled</a>
               </li>
             </ul>
-            <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Signup
-</button>
+            {% if auth_out.is_authenticated %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                welcome:{{request.aut_out}}
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/logout">logout</a></li>
+              </ul>
+            </li>
+            {% else %}
+            <!--button trigeer login-->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login">
+              login
+            </button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signupModal">
+              Signup
+            </button>
+            {% endif %}
             <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success" type="submit">Search</button>
@@ -53,7 +67,7 @@
       </nav>
       
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -83,6 +97,33 @@
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label"> Confirm Password</label>
             <input type="password" class="form-control" id="exampleInputPassword1" name='Confirm_Password'>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--login modal-->
+<div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="loginModalLabel">login</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method='POST' action='/login/'>
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="" class="form-label">User Name</label>
+            <input type="text" class="form-control" name='name' aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text"></div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" name='password'>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
