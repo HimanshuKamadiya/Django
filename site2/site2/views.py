@@ -1,6 +1,7 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from project2.models import dell,book
+from django.contrib.auth.models import User
 
 
 def sum(request):
