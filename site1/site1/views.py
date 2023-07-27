@@ -1,9 +1,9 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from .forms import uforms
 from kamadiya.models import service,book,blog,contact,free
 from django.core.paginator import Paginator
-
+from django.contrib.auth.models import User
 
 
 def home(request):
@@ -144,3 +144,19 @@ def media_pg(request):
 def media_out(request):
     b=free.objects.all()
     return render (request,'mediaout.html',{'ab':b})
+
+def sigup(request):
+    if request.method=='POST':
+        name=request.POST['Name']
+        username=request.POST['USER_NAME']
+        email=request.POST['email']
+        password=request.POST['Password']
+        confirm_password=request.POST['Confirm_Password']
+        
+        
+        myuser= User.objects.create_user(username,email,password)
+        myuser.first_name=name
+        myuser.save()
+        return redirect('/')
+    else:
+        return HttpResponse('invalid')

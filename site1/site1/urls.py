@@ -37,7 +37,8 @@ urlpatterns = [
     path('blogout/',views.blog_a ),
     path('contactout/',views.con),
     path('upload/',views.media_pg),
-    path('mediaout/',views.media_out)
+    path('mediaout/',views.media_out),
+    path('signup/',views.sigup,name='signup')
 ]
 
 if settings.DEBUG:
