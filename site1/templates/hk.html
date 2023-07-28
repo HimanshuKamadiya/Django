@@ -34,21 +34,20 @@
                   <li><a class="dropdown-item" href="/blogout">blog</a></li>
                 </ul>
               </li>
-              <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
-              </li>
             </ul>
-            {% if auth_out.is_authenticated %}
-            <li class="nav-item dropdown">
+            <!--logout logic-->
+            {% if user.is_authenticated %}
+            <li class="nav-item dropup">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                welcome:{{request.aut_out}}
+                welcome:{{request.user}}<!--the message -->
               </a>
               <ul class="dropdown-menu">
+                <!--button trigger for logout-->
                 <li><a class="dropdown-item" href="/logout">logout</a></li>
               </ul>
             </li>
             {% else %}
-            <!--button trigeer login-->
+            <!--button trigeer login/Signup-->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login">
               login
             </button>
@@ -60,12 +59,10 @@
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
-            
-
           </div>
         </div>
       </nav>
-      
+
 <!-- Modal -->
 <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">

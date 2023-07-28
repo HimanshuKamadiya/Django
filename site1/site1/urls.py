@@ -39,7 +39,8 @@ urlpatterns = [
     path('upload/',views.media_pg),
     path('mediaout/',views.media_out),
     path('signup/',views.sigup,name='signup'),
-    path('login/',views.log_in,name='login')
+    path('login/',views.log_in,name='login'),
+    path('logout/',views.log_out,name='logout')
 ]
 
 if settings.DEBUG:
