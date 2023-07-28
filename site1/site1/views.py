@@ -77,11 +77,11 @@ def calc(request):
         n1=int(request.GET['num'])
         n2=int(request.GET['num2'])
         
-        if request.GET.get('add') =='':
+        if request.GET.get('add') =='' :
             ans= n1+n2
-        elif request.GET.get('sub')=='':
+        elif request.GET.get('sub')=='' :
             ans=n1-n2
-        elif request.GET.get('divide')=='':
+        elif request.GET.get('divide')=='' :
             ans= n1/n2
         else:
             ans=n1*n2
@@ -105,7 +105,7 @@ def book_models(request):
     if request.method=='GET':
         a=request.GET.get('data')
         if a!=None:
-            f_varr =book.objects.filter(name__icontains= a)
+            f_varr =book.objects.filter(name__icontains= a) #icontains gives suggestion of the element which contains a.
     
     data={
         'book_context': f_varr
