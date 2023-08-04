@@ -1,0 +1,9 @@
+{% extends 'hk.html' %}
+{% block abc %}
+{% for i in key  %}
+
+<a href='/todo/detail/{{i.id}}'>{{i.f_model}}<br>
+
+{% endfor %}
+
+{% endblock abc %}
