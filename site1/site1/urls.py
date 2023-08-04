@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from site1 import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -40,7 +40,8 @@ urlpatterns = [
     path('mediaout/',views.media_out),
     path('signup/',views.sigup,name='signup'),
     path('login/',views.log_in,name='login'),
-    path('logout/',views.log_out,name='logout')
+    path('logout/',views.log_out,name='logout'),
+    path('todo/',include('todo.urls')),
 ]
 
 if settings.DEBUG:
