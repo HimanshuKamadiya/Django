@@ -19,6 +19,12 @@ class redirect_temp(RedirectView):
 
 class list_view(ListView):
     model=cbv # active var
-    template_name='template.html'
+    template_name='list.html'
     context_object_name='key' #key for the dict
     paginate_by=2
+    
+class detail_view(DetailView):
+    model=cbv
+    template_name='details.html'
+    context_object_name='name'
+    
