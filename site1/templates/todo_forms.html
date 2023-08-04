@@ -1,0 +1,9 @@
+{% extends 'hk.html' %}
+{% block abc %}
+<form method='POST'>
+   {% csrf_token %}
+   {{form}}
+   <button type='submit'>Submit</button>
+</form>
+{% endblock abc %}
+

@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import View
 from django.views.generic import DetailView, TemplateView,RedirectView,ListView,FormView
-from .models import cbv
+from .models import cbv,contactform
+from todo.forms import *
+from django.urls import reverse_lazy
 
 
 class todo_home(View):
@@ -28,3 +30,15 @@ class detail_view(DetailView):
     template_name='details.html'
     context_object_name='name'
     
+class form_view(FormView):
+    template_name= 'todo_forms.html'
+    form_class=contactform_
+    success_url= reverse_lazy('form')
+    
+    def form_valid(self, form):
+        name=form.cleaned_data['name']
+        message=form.cleaned_data['message']
+        email=form.cleaned_data['email']
+        a=contactform.objects.create(name=name,email=email,message=message)
+        a.save()
+        return super().form_valid(form)
