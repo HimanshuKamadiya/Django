@@ -7,3 +7,4 @@ urlpatterns = [
     path('temp/',temp_view.as_view(),name='temp'),
     path('list/',list_view.as_view(),name='list')
 ]
+
