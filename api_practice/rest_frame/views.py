@@ -8,7 +8,7 @@ from django.http import HttpResponse
 
 def rest_api_views(request):
     data = rest_api_function.objects.all()
-    serial = rest_apiserializers(data, many=True)
+    serial = rest_apiserializer_s(data, many=True)
     json_data = JSONRenderer().render(serial.data)
     return HttpResponse(json_data, content_type='application/json')
 
