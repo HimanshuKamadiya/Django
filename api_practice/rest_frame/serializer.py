@@ -4,7 +4,7 @@ from rest_framework import serializers
 
 class rest_apiserializer_s(serializers.Serializer):
     rest_model_1=serializers.CharField(max_length=100)
-    rest_model_2=serializers.DictField() 
+    rest_model_2=serializers.IntegerField() 
     
     
 class rest_apiserializers(serializers.ModelSerializer):
