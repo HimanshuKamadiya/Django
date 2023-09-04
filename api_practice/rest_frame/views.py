@@ -5,6 +5,7 @@ from rest_frame.models import rest_api_function
 from rest_frame.serializer import rest_apiserializer_s,rest_apiserializers
 from rest_framework.renderers import JSONRenderer
 from django.http import HttpResponse
+from rest_framework.viewsets import ViewSet
 
 def rest_api_views(request):
     data = rest_api_function.objects.all()
@@ -43,4 +44,27 @@ class rest_api_detail_view(APIView):
             serial.save()
             return Response(serial.data)
         return Response(serial.errors, status=status.HTTP_400_BAD_REQUEST)
-
+# using viewssets
+class rest_api_function_viewset(ViewSet):
+    def list(self,request):
+        books=rest_api_function.objests.all()
+        serializer=rest_apiserializers(books)
+        return Response(serializer.data)
+    
+    def retrieve(self,request,pk):
+        book=rest_api_function.objects.get(pk=pk)
+        serializer=rest_api_function(book)
+        return Response(serializer.data)
+    
+    def create(self, request):
+        serializer= rest_apiserializers(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+    
+    
+    def update(self, request, pk=None):
+        pass
+    
+    def destroy(self, request, pk=None):
+        pass
